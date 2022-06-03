@@ -22,7 +22,7 @@ RUN apt update -y &&					\
 	git									\
 	gperf								\
 	make								\
-	python								\
+	python3								\
 	texinfo								\
 	unrar								\
 	unzip								\
