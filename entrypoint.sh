@@ -1,3 +1,3 @@
 #!/bin/bash
-cd /playground
+cd /crosstool
 eval $*

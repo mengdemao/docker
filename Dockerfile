@@ -3,17 +3,14 @@ FROM ubuntu:latest
 RUN apt update -y &&					\
 	apt upgrade -y &&					\
 	apt install -y						\
-	gcc									\
-	gcc-arm-linux-gnueabi				\
-	gcc-arm-linux-gnueabihf				\
-	gcc-arm-none-eabi					\
+	software-properties-common 			\
+	build-essential						\
 	qemu								\
 	clang								\
 	llvm								\
 	grep								\
 	sed									\
 	gawk								\
-	u-boot-tools						\
 	autoconf							\
 	automake							\
 	bison								\
@@ -21,7 +18,6 @@ RUN apt update -y &&					\
 	flex								\
 	git									\
 	gperf								\
-	make								\
 	python3								\
 	texinfo								\
 	unrar								\
@@ -40,17 +36,16 @@ RUN apt update -y &&					\
 	rsync
 
 USER root
-RUN useradd -m -s /bin/bash bytebox &&\
-	passwd -d bytebox &&\
-	echo "bytebox      ALL = NOPASSWD: ALL" >> /etc/sudoers &&\
-	mkdir -p /compiler && chown -R bytebox:bytebox /compiler &&\
-	mkdir -p /bytebox  && chown -R bytebox:bytebox /bytebox
+RUN useradd -m -s /bin/bash mengdemao &&\
+	passwd -d mengdemao &&\
+	echo "mengdemao      ALL = NOPASSWD: ALL" >> /etc/sudoers &&\
+	mkdir -p /crosstool && chown -R mengdemao:mengdemao /crosstool
 
-VOLUME /playground
+VOLUME /bin
 
 COPY ./entrypoint.sh ./entrypoint.sh
 USER root
 RUN ["chmod", "+x", "./entrypoint.sh"]
-USER bytebox
+USER mengdemao
 
-ENTRYPOINT ["./entrypoint.sh"]
+ENTRYPOINT ["/bin/entrypoint.sh"]
