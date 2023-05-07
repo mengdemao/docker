@@ -1,4 +1,4 @@
-FROM docker-base:latest
+FROM mengdemao/docker-base:latest
 
 VOLUME /bin
 
