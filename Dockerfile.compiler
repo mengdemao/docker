@@ -1,4 +1,4 @@
-FROM docker_base:latest
+FROM docker-base:latest
 
 VOLUME /bin
 
