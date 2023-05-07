@@ -1,0 +1,10 @@
+FROM docker_base:latest
+
+VOLUME /bin
+
+COPY ./crosstool_entry.sh ./crosstool_entry.sh
+USER root
+RUN ["chmod", "+x", "./crosstool_entry.sh"]
+USER mengdemao
+
+ENTRYPOINT ["/bin/crosstool_entry.sh"]

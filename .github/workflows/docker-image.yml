@@ -28,7 +28,4 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Build and push
-      uses: docker/build-push-action@v4
-      with:
-        push: true
-        tags: mengdemao/docker-compiler:latest
+      run: ./fake_ci.sh

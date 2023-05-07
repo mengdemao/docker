@@ -39,13 +39,7 @@ USER root
 RUN useradd -m -s /bin/bash mengdemao &&\
 	passwd -d mengdemao &&\
 	echo "mengdemao      ALL = NOPASSWD: ALL" >> /etc/sudoers &&\
-	mkdir -p /crosstool && chown -R mengdemao:mengdemao /crosstool
+	mkdir -p /crosstool && chown -R mengdemao:mengdemao /crosstool &&\
+	mkdir -p /workspace && chown -R mengdemao:mengdemao /workspace
 
-VOLUME /bin
-
-COPY ./entrypoint.sh ./entrypoint.sh
-USER root
-RUN ["chmod", "+x", "./entrypoint.sh"]
-USER mengdemao
-
-ENTRYPOINT ["/bin/entrypoint.sh"]
+CMD [ "/bin/bash" ]

@@ -1,0 +1,10 @@
+FROM docker_base:latest
+
+VOLUME /bin
+
+COPY ./compiler_entry.sh ./compiler_entry.sh
+USER root
+RUN ["chmod", "+x", "./compiler_entry.sh"]
+USER mengdemao
+
+ENTRYPOINT ["/bin/compiler_entry.sh"]
