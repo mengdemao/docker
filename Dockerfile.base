@@ -33,7 +33,9 @@ RUN apt update -y &&					\
 	help2man							\
 	lzip								\
 	axel								\
-	rsync
+	rsync								\
+	bc									\
+	libssl-dev
 
 USER root
 RUN useradd -m -s /bin/bash mengdemao &&\
